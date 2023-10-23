@@ -5,6 +5,7 @@ import HomeScreen from './pages/HomeScreen'
 import LoyaltyPoints from './pages/LoyaltyPoints'
 import Review from './pages/Review'
 import { NavigationContainer } from '@react-navigation/native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,9 +13,30 @@ export default function App() {
   return (
     <NavigationContainer>
     <Tab.Navigator>
-    <Tab.Screen name="Home" component={HomeScreen} />
-    <Tab.Screen name="Review" component={Review} />
-    <Tab.Screen name="Loyalty Points" component={LoyaltyPoints} />
+    <Tab.Screen name="Home" component={HomeScreen}
+    options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
+          // tabBarBadge: 3,
+        }}/>
+    <Tab.Screen name="Review" component={Review}
+    options={{
+          tabBarLabel: 'Review',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="video-check-outline" color={color} size={size} />
+          ),
+          // tabBarBadge: 3,
+        }}/>
+    <Tab.Screen name="Loyalty Points" component={LoyaltyPoints}
+    options={{
+          tabBarLabel: 'Loyalty Points',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="scoreboard-outline" color={color} size={size} />
+          ),
+          // tabBarBadge: 3,
+        }}/>
     </Tab.Navigator>
     </NavigationContainer>
 
