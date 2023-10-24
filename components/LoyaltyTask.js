@@ -19,7 +19,6 @@ export default LoyaltyTask;
 
 const styles = StyleSheet.create({
   container: {
-    width: '80%',
     backgroundColor: 'yellow',
     justifyContent: 'space-around',
     height: 40,

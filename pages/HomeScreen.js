@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import {ScrollView , StyleSheet, Text, View,SafeAreaView, FlatList } from 'react-native';
 import ReccomendationComponent from '../components/ReccomendationComponent'
-import { Dimensions } from 'react-native';
 import {Platform} from 'react-native';
 
 
-const screenWidth = Dimensions.get('window').width;
 const isWeb = Platform.OS === 'web';
 const numColumns = isWeb ? 4 : 2;
 
@@ -36,7 +34,6 @@ const HomeScreen = () => {
         { id: '22', color: 'violet', text: 'Item 22' },
         { id: '23', color: 'salmon', text: 'Item 23' },
         { id: '24', color: 'tomato', text: 'Item 24' },
-        // Add more items as needed
       ];
 
       const renderItem = ({ item }) => (
@@ -50,7 +47,7 @@ const HomeScreen = () => {
       data={data}
       keyExtractor={(item) => item.id}
       renderItem={renderItem}
-      numColumns={numColumns} // Number of columns in the grid
+      numColumns={numColumns}
       styles={styles.container}
     />
   </SafeAreaView>
