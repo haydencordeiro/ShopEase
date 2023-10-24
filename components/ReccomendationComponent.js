@@ -2,8 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Dimensions } from 'react-native';
 import { Image } from 'expo-image';
+import {Platform} from 'react-native';
+
 
 const screenWidth = Dimensions.get('window').width;
+const isWeb = Platform.OS === 'web';
+
 const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
@@ -11,7 +15,7 @@ const blurhash =
 const ReccomendationComponent = () => {
 
   return (
-    <View style={styles.containerWeb}>
+    <View style={isWeb ? styles.containerWeb: styles.containerAndroid}>
       <View style={styles.imageContainer}>      
       <Image
         style={styles.image}
@@ -77,7 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     padding: 1,
     backgroundColor:'#FFFFFF',
-    flexBasis: '50%'
+    flexBasis: '25%'
     // width: '40%'
     // alignItems: 'center',
     // justifyContent: 'center',
