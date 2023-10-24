@@ -31,23 +31,25 @@ const LoyaltyPoints = () => {
     { id: '24', color: 'tomato', text: 'Task 24' },
     // Add more items as needed
   ]);
-
+  const [loyaltyPoints, setLoyaltyPoints] = useState(0)
   function setToDoToDone(item){
     let temp = data[item - 1];
-    console.log(item)
-    // console.log(temp);
     temp.done = "test";
     // temp.push("done","Test");
   }
+
+  function incrementLoyaltyPoints(value){
+    setLoyaltyPoints(loyaltyPoints + value);
+  }
   const renderItem = ({ item }) => (
-    <LoyaltyTask item={item} setToDoToDone={setToDoToDone}/>
+    <LoyaltyTask item={item} setToDoToDone={setToDoToDone} incrementLoyaltyPoints={incrementLoyaltyPoints}/>
   );
 
   return (
     <View style={styles.container}>
-      <View style={styles.totalPointsContainer}>
+      <View style={styles.totalPointsContainer} >
       <Text style={styles.tpTitleText}>Your Loyalty Points</Text>
-      <Text style={styles.tpSubTitleText}>1000</Text>
+      <Text style={styles.tpSubTitleText}>{loyaltyPoints}</Text>
       </View>
       
     <FlatList
@@ -72,12 +74,14 @@ const styles = StyleSheet.create({
   },
   totalPointsContainer:{
     height: 120,
-    width: '90%',
-    backgroundColor: 'red',
+    width: '100%',
+    backgroundColor: '#FAFAFA',
     justifyContent: 'center',
     alignContent: 'center',
-    borderRadius: 10,
-    alignItems: 'center'
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
+    alignItems: 'center',
+    marginBottom: 20,
   },
   container: {
     width: '100%',
@@ -85,12 +89,12 @@ const styles = StyleSheet.create({
     flex:1,
   },
   tpTitleText:{
-    color: "#fff",
+    color: "#1D1D1D",
     fontSize: 16,
     fontWeight: 'bold'
   },
   tpSubTitleText:{
-    color: "#fff",
+    color: "#1D1D1D",
     fontSize: 40,
 
   }

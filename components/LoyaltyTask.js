@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 var width = Dimensions.get('window').width; 
 
 
-const LoyaltyTask = ({item,setToDoToDone}) => {
+const LoyaltyTask = ({item,setToDoToDone, incrementLoyaltyPoints}) => {
 
 
   const [image, setImage] = useState(null);
@@ -23,6 +23,7 @@ const LoyaltyTask = ({item,setToDoToDone}) => {
     
     if (!result.canceled) {
       setToDoToDone(item);
+      incrementLoyaltyPoints(10);
       setImage(result.assets[0].uri);
     }
   };
@@ -31,11 +32,11 @@ const LoyaltyTask = ({item,setToDoToDone}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={()=>pickImage(item.id)}>
       <View style={item.done? styles.leftComponentDone : styles.leftComponent}>
-        <View style={styles.profileIcon}><Text>T</Text></View>
+        <View style={styles.profileIcon}><Text></Text></View>
       </View>
       <View style={styles.rightComponent}>
       <Text>{item.text}</Text>
-      <Text>Upload Picture to get points</Text>
+      <Text style={{color: "#484848"}}>Upload Picture to get points</Text>
       </View>
     </TouchableOpacity>
 
@@ -55,33 +56,34 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   container: {
-    backgroundColor: 'pink',
     height: 70,
     width: Number(width * 0.85),
     flexDirection:'row',
     margin:5,
     borderRadius:5,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom:20,
   },
   leftComponent:{
-    backgroundColor: 'pink',
+    backgroundColor: '#296DDB',
     height: '100%',
     justifyContent:'center',
-    paddingRight:10
+    paddingRight:10,
+    borderRadius:100
 
   },
   leftComponentDone:{
     backgroundColor: 'green',
     height: '100%',
     justifyContent:'center',
-    paddingRight:10
-
+    paddingRight:10,
+    borderRadius:100,
   },
   rightComponent:{
     paddingLeft:10,
     flexGrow:1,
     justifyContent:'center',
-    backgroundColor: 'violet',
+    backgroundColor: '#F2F2F2',
     height: '100%',
     borderBottomEndRadius:10,
     borderTopEndRadius:10,

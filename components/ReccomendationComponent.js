@@ -15,7 +15,7 @@ const ReccomendationComponent = () => {
       <View style={styles.imageContainer}>      
       <Image
         style={styles.image}
-        source="https://picsum.photos/seed/696/3000/2000"
+        source="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/24014310/2023/7/14/e0d643e5-05bc-4249-833b-0ddf80440f851689274793057BULLMERMenBeigePrintedV-NeckPocketsT-shirt1.jpg"
         placeholder={blurhash}
         contentFit="cover"
         transition={1000}
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   imageContainer:{
-    height: 170,
+    height: 240,
     backgroundColor: 'white'
   },
   dataContainer:{
