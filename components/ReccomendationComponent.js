@@ -11,7 +11,7 @@ const blurhash =
 const ReccomendationComponent = () => {
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containerWeb}>
       <View style={styles.imageContainer}>      
       <Image
         style={styles.image}
@@ -62,7 +62,17 @@ const styles = StyleSheet.create({
     height: 85,
     backgroundColor: '#FFFFFF'
   },
-  container: {
+  containerAndroid: {
+    // flex: 1,
+    backgroundColor: 'black',
+    padding: 1,
+    backgroundColor:'#FFFFFF',
+    flexBasis: '50%'
+    // width: '40%'
+    // alignItems: 'center',
+    // justifyContent: 'center',
+  },
+  containerWeb: {
     // flex: 1,
     backgroundColor: 'black',
     padding: 1,
