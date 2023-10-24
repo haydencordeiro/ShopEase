@@ -20,10 +20,9 @@ const LoyaltyTask = ({item,setToDoToDone}) => {
       quality: 1,
     });
 
-    setToDoToDone(item);
-    // console.log(result);
-
+    
     if (!result.canceled) {
+      setToDoToDone(item);
       setImage(result.assets[0].uri);
     }
   };
