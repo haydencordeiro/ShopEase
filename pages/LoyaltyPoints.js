@@ -1,39 +1,46 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import LoyaltyTask from '../components/LoyaltyTask'
+import React, { useState, useEffect } from 'react';
 
 const LoyaltyPoints = () => {
-  
-  const data = [
-    { id: '1', color: 'red', text: 'Item 1' },
-    { id: '2', color: 'green', text: 'Item 2' },
-    { id: '3', color: 'blue', text: 'Item 3' },
-    { id: '4', color: 'orange', text: 'Item 4' },
-    { id: '5', color: 'purple', text: 'Item 5' },
-    { id: '6', color: 'pink', text: 'Item 6' },
-    { id: '7', color: 'yellow', text: 'Item 7' },
-    { id: '8', color: 'brown', text: 'Item 8' },
-    { id: '9', color: 'cyan', text: 'Item 9' },
-    { id: '10', color: 'magenta', text: 'Item 10' },
-    { id: '11', color: 'teal', text: 'Item 11' },
-    { id: '12', color: 'indigo', text: 'Item 12' },
-    { id: '13', color: 'maroon', text: 'Item 13' },
-    { id: '14', color: 'lime', text: 'Item 14' },
-    { id: '15', color: 'gold', text: 'Item 15' },
-    { id: '16', color: 'silver', text: 'Item 16' },
-    { id: '17', color: 'gray', text: 'Item 17' },
-    { id: '18', color: 'olive', text: 'Item 18' },
-    { id: '19', color: 'navy', text: 'Item 19' },
-    { id: '20', color: 'coral', text: 'Item 20' },
-    { id: '21', color: 'cyan', text: 'Item 21' },
-    { id: '22', color: 'violet', text: 'Item 22' },
-    { id: '23', color: 'salmon', text: 'Item 23' },
-    { id: '24', color: 'tomato', text: 'Item 24' },
+  const [data, setData] = useState([
+    { id: '1', color: 'red', text: 'Task 1' },
+    { id: '2', color: 'green', text: 'Task 2' },
+    { id: '3', color: 'blue', text: 'Task 3' },
+    { id: '4', color: 'orange', text: 'Task 4' },
+    { id: '5', color: 'purple', text: 'Task 5' },
+    { id: '6', color: 'pink', text: 'Task 6' },
+    { id: '7', color: 'yellow', text: 'Task 7' },
+    { id: '8', color: 'brown', text: 'Task 8' },
+    { id: '9', color: 'cyan', text: 'Task 9' },
+    { id: '10', color: 'magenta', text: 'Task 10' },
+    { id: '11', color: 'teal', text: 'Task 11' },
+    { id: '12', color: 'indigo', text: 'Task 12' },
+    { id: '13', color: 'maroon', text: 'Task 13' },
+    { id: '14', color: 'lime', text: 'Task 14' },
+    { id: '15', color: 'gold', text: 'Task 15' },
+    { id: '16', color: 'silver', text: 'Task 16' },
+    { id: '17', color: 'gray', text: 'Task 17' },
+    { id: '18', color: 'olive', text: 'Task 18' },
+    { id: '19', color: 'navy', text: 'Task 19' },
+    { id: '20', color: 'coral', text: 'Task 20' },
+    { id: '21', color: 'cyan', text: 'Task 21' },
+    { id: '22', color: 'violet', text: 'Task 22' },
+    { id: '23', color: 'salmon', text: 'Task 23' },
+    { id: '24', color: 'tomato', text: 'Task 24' },
     // Add more items as needed
-  ];
+  ]);
 
+  function setToDoToDone(item){
+    let temp = data[item - 1];
+    console.log(item)
+    // console.log(temp);
+    temp.done = "test";
+    // temp.push("done","Test");
+  }
   const renderItem = ({ item }) => (
-    <LoyaltyTask/>
+    <LoyaltyTask item={item} setToDoToDone={setToDoToDone}/>
   );
 
   return (

@@ -6,12 +6,12 @@ import React, { useState, useEffect } from 'react';
 var width = Dimensions.get('window').width; 
 
 
-const LoyaltyTask = () => {
+const LoyaltyTask = ({item,setToDoToDone}) => {
 
 
   const [image, setImage] = useState(null);
 
-  const pickImage = async () => {
+  const pickImage = async (item) => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -20,7 +20,8 @@ const LoyaltyTask = () => {
       quality: 1,
     });
 
-    console.log(result);
+    setToDoToDone(item);
+    // console.log(result);
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
@@ -29,12 +30,12 @@ const LoyaltyTask = () => {
 
 
   return (
-    <TouchableOpacity style={styles.container} onPress={pickImage}>
-      <View style={styles.leftComponent}>
+    <TouchableOpacity style={styles.container} onPress={()=>pickImage(item.id)}>
+      <View style={item.done? styles.leftComponentDone : styles.leftComponent}>
         <View style={styles.profileIcon}><Text>T</Text></View>
       </View>
       <View style={styles.rightComponent}>
-      <Text>Task 1</Text>
+      <Text>{item.text}</Text>
       <Text>Upload Picture to get points</Text>
       </View>
     </TouchableOpacity>
@@ -64,7 +65,14 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   leftComponent:{
-    // backgroundColor: 'green',
+    backgroundColor: 'pink',
+    height: '100%',
+    justifyContent:'center',
+    paddingRight:10
+
+  },
+  leftComponentDone:{
+    backgroundColor: 'green',
     height: '100%',
     justifyContent:'center',
     paddingRight:10
@@ -76,6 +84,8 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     backgroundColor: 'violet',
     height: '100%',
+    borderBottomEndRadius:10,
+    borderTopEndRadius:10,
 
   }
 });
