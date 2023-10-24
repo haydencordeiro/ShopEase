@@ -13,6 +13,14 @@ export default function App() {
   return (
     <NavigationContainer>
     <Tab.Navigator>
+      <Tab.Screen name="Loyalty Points" component={LoyaltyPoints}
+      options={{
+            tabBarLabel: 'Loyalty Points',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="scoreboard-outline" color={color} size={size} />
+            ),
+            // tabBarBadge: 3,
+          }}/>
     <Tab.Screen name="Home" component={HomeScreen}
     options={{
           tabBarLabel: 'Home',
@@ -26,14 +34,6 @@ export default function App() {
           tabBarLabel: 'Review',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="video-check-outline" color={color} size={size} />
-          ),
-          // tabBarBadge: 3,
-        }}/>
-    <Tab.Screen name="Loyalty Points" component={LoyaltyPoints}
-    options={{
-          tabBarLabel: 'Loyalty Points',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="scoreboard-outline" color={color} size={size} />
           ),
           // tabBarBadge: 3,
         }}/>
