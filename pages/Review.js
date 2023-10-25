@@ -166,11 +166,16 @@ const Review = () => {
         display: 'flex',
         alignContent: 'space-around',
       }}>
-        {openCamera ? <Button
+        {openCamera && !isVideoRecording ? <Button
           title="Flip Camera"
           onPress={() => switchCamera()}>
         </Button> : null}
-        <Button title={openCamera ? "Take video" : "Open Camera"} onPress={() => recordVideo()} />
+        {
+          !isVideoRecording && !isPreview ?
+          <Button title={openCamera ? "Take video" : "Open Camera"} onPress={() => recordVideo()} />
+          :null
+        }
+      
         {openCamera ? <Button title="Stop Video" onPress={() => stopVideoRecording()} /> : null}
         {isPreview ? <Button
           title={status.isPlaying ? 'Pause' : 'Play'}
