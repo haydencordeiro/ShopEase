@@ -149,9 +149,10 @@ const Review = () => {
           }}
         />
         : null}
+        
       <View style={{
         width: "100%",
-        height: "50%"
+        height: openCamera? "100%" : "50%"
       }}>
         {isVideoRecording && !videoSource && renderVideoRecordIndicator()}
         {videoSource && renderVideoPlayer()}
@@ -164,7 +165,12 @@ const Review = () => {
         flexDirection: 'row',
         alignItems: 'center',
         display: 'flex',
-        alignContent: 'space-around',
+        alignContent: 'center',
+        position:'absolute',
+        bottom:10,
+        left:10,
+        right:10
+        
       }}>
         {openCamera && !isVideoRecording ? <Button
           title="Flip Camera"
@@ -193,8 +199,7 @@ const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
 const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "70%"
+    ...StyleSheet.absoluteFill
   },
   closeButton: {
     position: "absolute",
