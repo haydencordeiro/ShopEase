@@ -17,7 +17,7 @@ const ReccomendationComponent = () => {
         style={styles.image}
         source="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/24014310/2023/7/14/e0d643e5-05bc-4249-833b-0ddf80440f851689274793057BULLMERMenBeigePrintedV-NeckPocketsT-shirt1.jpg"
         placeholder={blurhash}
-        contentFit="cover"
+        contentFit="contain"
         transition={1000}
       /></View>
       <View style={styles.dataContainer}>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   imageContainer:{
-    height: 240,
+    height: 270,
     backgroundColor: 'white'
   },
   dataContainer:{

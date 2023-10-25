@@ -53,6 +53,9 @@ const LoyaltyPoints = () => {
       </View>
       
     <FlatList
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+    
       data={data}
       keyExtractor={(item) => item.id}
       renderItem={renderItem}
@@ -69,7 +72,6 @@ export default LoyaltyPoints;
 
 const styles = StyleSheet.create({
   containerFlatList:{
-    backgroundColor: 'violet'
 
   },
   totalPointsContainer:{
@@ -81,7 +83,9 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 0,
+    elevation: 20,
+    shadowColor: '#52006A',
   },
   container: {
     width: '100%',
