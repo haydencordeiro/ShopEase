@@ -15,15 +15,15 @@ const ReccomendationComponent = ({item}) => {
       <View style={styles.imageContainer}>      
       <Image
         style={styles.image}
-        source={item.image}
+        source={item.productImageUrl}
         placeholder={blurhash}
         contentFit="contain"
         transition={1000}
       /></View>
       <View style={styles.dataContainer}>
-        <Text style={styles.titleText}>{item.title}</Text>
-        <Text style={styles.subtitleText}>{item.description}</Text>
-        <Text style={styles.priceText}>{item.price}</Text>
+        <Text style={styles.titleText}>{item.productName}</Text>
+        <Text style={styles.subtitleText}>{item.productDescription}</Text>
+        <Text style={styles.priceText}>{item.productPrice}</Text>
         </View>
     </View>
 

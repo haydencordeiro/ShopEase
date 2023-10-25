@@ -15,10 +15,10 @@ const HomeScreen = () => {
 
       async function fetchData(){
         try {
-          const response = await fetch('https://fakestoreapi.com/products');
+          const response = await fetch('https://shop-ease-nzbi.onrender.com/');
           const json = await response.json();
-          console.log(json);
-          setData(json);
+          // console.log(json.data);
+          setData(json.data);
         } catch (error) {
           console.error(error);
         } finally {
