@@ -149,9 +149,10 @@ const Review = () => {
           }}
         />
         : null}
+        
       <View style={{
         width: "100%",
-        height: "50%"
+        height: openCamera? "100%" : "100%"
       }}>
         {isVideoRecording && !videoSource && renderVideoRecordIndicator()}
         {videoSource && renderVideoPlayer()}
@@ -164,13 +165,23 @@ const Review = () => {
         flexDirection: 'row',
         alignItems: 'center',
         display: 'flex',
-        alignContent: 'space-around',
+        alignContent: 'center',
+        position:'absolute',
+        bottom:10,
+        left:10,
+        right:10
+        
       }}>
-        {openCamera ? <Button
+        {openCamera && !isVideoRecording ? <Button
           title="Flip Camera"
           onPress={() => switchCamera()}>
         </Button> : null}
-        <Button title={openCamera ? "Take video" : "Open Camera"} onPress={() => recordVideo()} />
+        {
+          !isVideoRecording && !isPreview ?
+          <Button title={openCamera ? "Take video" : "Open Camera"} onPress={() => recordVideo()} />
+          :null
+        }
+      
         {openCamera ? <Button title="Stop Video" onPress={() => stopVideoRecording()} /> : null}
         {isPreview ? <Button
           title={status.isPlaying ? 'Pause' : 'Play'}
@@ -188,8 +199,7 @@ const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
 const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "70%"
+    ...StyleSheet.absoluteFill
   },
   closeButton: {
     position: "absolute",
@@ -205,14 +215,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   media: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.2)',
-    position: 'relative',
-    resizeMode: 'cover',
-    zIndex: 10,
-    height: '100%',
-    width: '100%',
-
+    ...StyleSheet.absoluteFill,
   },
   closeCross: {
     width: "68%",
