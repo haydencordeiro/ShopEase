@@ -152,7 +152,7 @@ const Review = () => {
         
       <View style={{
         width: "100%",
-        height: openCamera? "100%" : "50%"
+        height: openCamera? "100%" : "100%"
       }}>
         {isVideoRecording && !videoSource && renderVideoRecordIndicator()}
         {videoSource && renderVideoPlayer()}
@@ -215,14 +215,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   media: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.2)',
-    position: 'relative',
-    resizeMode: 'cover',
-    zIndex: 10,
-    height: '100%',
-    width: '100%',
-
+    ...StyleSheet.absoluteFill,
   },
   closeCross: {
     width: "68%",
