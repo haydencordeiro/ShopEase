@@ -8,22 +8,22 @@ const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
 
-const ReccomendationComponent = () => {
+const ReccomendationComponent = ({item}) => {
 
   return (
     <View style={isWeb ? styles.containerWeb: styles.containerAndroid}>
       <View style={styles.imageContainer}>      
       <Image
         style={styles.image}
-        source="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/24014310/2023/7/14/e0d643e5-05bc-4249-833b-0ddf80440f851689274793057BULLMERMenBeigePrintedV-NeckPocketsT-shirt1.jpg"
+        source={item.image}
         placeholder={blurhash}
         contentFit="contain"
         transition={1000}
       /></View>
       <View style={styles.dataContainer}>
-        <Text style={styles.titleText}>Forever New</Text>
-        <Text style={styles.subtitleText}>Womens Slimline Laptop Code</Text>
-        <Text style={styles.priceText}>$4956</Text>
+        <Text style={styles.titleText}>{item.title}</Text>
+        <Text style={styles.subtitleText}>{item.description}</Text>
+        <Text style={styles.priceText}>{item.price}</Text>
         </View>
     </View>
 
