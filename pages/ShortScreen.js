@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { Dimensions, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Video } from 'expo-av';
+import { Video , InterruptionModeAndroid, InterruptionModeIOS, Audio } from 'expo-av';
 import {SwiperFlatList} from 'react-native-swiper-flatlist'
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -9,11 +9,12 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 let {height,width } = Dimensions.get('window');
  
+
 export default ShortScreen = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const onBuffer = (e) => {
-        console.log("buffering ", e)
+    //    console.log("buffering ", e)
     }
     const onError = (e) => {
         console.log("Error raised ", e);
@@ -30,12 +31,13 @@ export default ShortScreen = () => {
                 <Video
                     source={{ uri: item.sources[0] }}
                     shouldPlay={!(currentIndex!==index)}
-                    resizeMode="cover"
+                    resizeMode="stretch"
                     style={styles.backgroundVideo}
                     controls={true}
                     onLoad={onBuffer}
                     onError={onError}
                     isLooping  
+                    play
                     videoStyle={{
                         height:height
                     }} 
