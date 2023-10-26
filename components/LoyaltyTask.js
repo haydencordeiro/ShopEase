@@ -3,14 +3,24 @@ import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-nati
 import * as ImagePicker from 'expo-image-picker';
 import React, { useState, useEffect } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
 var width = Dimensions.get('window').width; 
 
 
-const LoyaltyTask = ({item,setToDoToDone, incrementLoyaltyPoints}) => {
-
-
+const LoyaltyTask = ({ item, setToDoToDone, incrementLoyaltyPoints}) => {
+  const navigation = useNavigation();
   const [image, setImage] = useState(null);
+
+
+  function performTask(item){
+    if (item.description && item.description == 'Upload Picture To Earn Points'){
+      pickImage(item)
+    }
+    else if(item.description == 'Record a Video of your Recent purchase' ){
+      navigation.navigate('Review');
+    }
+  }
 
   const pickImage = async (item) => {
     if(item.done){
@@ -26,21 +36,22 @@ const LoyaltyTask = ({item,setToDoToDone, incrementLoyaltyPoints}) => {
     
     
     if (!result.canceled) {
-      setToDoToDone(item.id);
-      incrementLoyaltyPoints(10);
-      setImage(result.assets[0].uri);
+        setToDoToDone(item.id);
+        incrementLoyaltyPoints(10);
+        setImage(result.assets[0].uri);
+      
     }
   };
 
 
   return (
-    <TouchableOpacity style={styles.container} onPress={()=>pickImage(item)}>
+    <TouchableOpacity style={styles.container} onPress={()=>performTask(item)}>
       <View style={styles.leftComponent}>
         <View style={item.done? styles.profileIconDone : styles.profileIcon}><MaterialCommunityIcons name="camera-plus-outline" color={"white"} size={60} /></View>
       </View>
       <View style={styles.rightComponent}>
       <Text>{item.text}</Text>
-      <Text style={{color: "#484848"}}>Upload Picture to get points</Text>
+      <Text style={{color: "#484848"}}>{item.description}</Text>
       </View>
     </TouchableOpacity>
 
