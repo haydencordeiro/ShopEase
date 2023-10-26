@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 const LoyaltyPoints = () => {
   const [data, setData] = useState([
     { id: '1', description: 'Upload Picture To Earn Points', text: 'Task 1' },
-    { id: '2', description: 'Record a Video of your Recent purchase', text: 'Task 1' },
+    { id: '2', description: 'Record a Video of your Recent purchase', text: 'Task 2' },
 
     // Add more items as needed
   ]);

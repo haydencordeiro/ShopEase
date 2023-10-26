@@ -1,4 +1,9 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity,Button } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import React, { useState, useEffect } from 'react';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
 import {Platform} from 'react-native';
 
@@ -7,11 +12,18 @@ const isWeb = Platform.OS === 'web';
 const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
+var width = Dimensions.get('window').width; 
 
-const ReccomendationComponent = ({item, setModalVisible,setSelectedProduct}) => {
+
+const ProductModal = ({ item, setModalVisible}) => {
+  const navigation = useNavigation();
+
+
+
 
   return (
-    <TouchableOpacity style={isWeb ? styles.containerWeb: styles.containerAndroid} onPress={() => {setSelectedProduct(item);setModalVisible(true)}}>
+    <TouchableOpacity style={styles.container} onPress={()=>{}}>
+          <View style={isWeb ? styles.containerWeb: styles.containerAndroid}>
       <View style={styles.imageContainer}>      
       <Image
         style={styles.image}
@@ -23,14 +35,19 @@ const ReccomendationComponent = ({item, setModalVisible,setSelectedProduct}) => 
       <View style={styles.dataContainer}>
         <Text style={styles.titleText}>{item.productName}</Text>
         <Text style={styles.subtitleText}>{item.productDescription}</Text>
-        <Text style={styles.priceText}>{item.productPrice}</Text>
+        <Text style={styles.priceText}>${item.productPrice}</Text>
+        <Text style={styles.subtitleText}> Isle Number 10</Text>
         </View>
+      <Button title='Hide' onPress={()=>setModalVisible(false)}></Button>
+    </View>
+      
+
     </TouchableOpacity>
 
   );
 }
 
-export default ReccomendationComponent;
+export default ProductModal;
 
 const styles = StyleSheet.create({
   titleText:{
@@ -54,10 +71,11 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   imageContainer:{
-    height: 270,
+    height: 470,
     backgroundColor: 'white'
   },
   dataContainer:{
+    marginLeft:10,
     height: 85,
     backgroundColor: '#FFFFFF'
   },

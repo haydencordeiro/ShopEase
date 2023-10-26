@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import {ScrollView , StyleSheet, Text, View,SafeAreaView, FlatList } from 'react-native';
+import {Modal , StyleSheet, Text, View,SafeAreaView, FlatList , Button} from 'react-native';
 import ReccomendationComponent from '../components/ReccomendationComponent'
 import {Platform} from 'react-native';
 import React, { useState, useEffect } from 'react';
+import ProductModal from '../components/ProductModal';
 
 const isWeb = Platform.OS === 'web';
 const numColumns = isWeb ? 4 : 2;
@@ -12,6 +13,11 @@ const HomeScreen = () => {
     const [data, setData] = useState([
 
       ]);
+
+      const [modalVisible, setModalVisible] = useState(false);
+      const [selectedProduct, setSelectedProduct] = useState(null);
+
+
 
       async function fetchData(){
         try {
@@ -30,12 +36,17 @@ const HomeScreen = () => {
       }, []);
 
       const renderItem = ({ item }) => (
-        <ReccomendationComponent item = {item}/>
+        <ReccomendationComponent item = {item} setModalVisible={setModalVisible} setSelectedProduct={setSelectedProduct}/>
       );
+
   return (
 
     <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
-
+    <Modal visible={modalVisible}>
+      <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
+        <ProductModal setModalVisible={setModalVisible} item={selectedProduct}></ProductModal>
+      </SafeAreaView>
+    </Modal>    
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}

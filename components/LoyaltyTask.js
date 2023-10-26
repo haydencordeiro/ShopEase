@@ -10,7 +10,7 @@ var width = Dimensions.get('window').width;
 
 const LoyaltyTask = ({ item, setToDoToDone, incrementLoyaltyPoints}) => {
   const navigation = useNavigation();
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState();
 
 
   function performTask(item){
