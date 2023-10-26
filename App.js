@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './pages/HomeScreen'
 import LoyaltyPoints from './pages/LoyaltyPoints'
-import Review from './pages/Review'
+import ShortScreen from './pages/ShortScreen'
 import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -21,9 +21,9 @@ export default function App() {
         ),
           // tabBarBadge: 3,
         }}/>
-    <Tab.Screen name="Review" component={Review}
+    <Tab.Screen name="Shorts" component={ShortScreen}
     options={{
-          tabBarLabel: 'Review',
+          tabBarLabel: 'Shorts',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="video-check-outline" color={color} size={size} />
             ),
