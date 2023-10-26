@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Button, Image, Dimensions, TouchableOpacity } f
 import { Camera } from 'expo-camera';
 import { Video } from 'expo-av';
 import { SafeAreaView } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Review = () => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -16,6 +18,7 @@ const Review = () => {
   const [status, setStatus] = useState(false)
   const cameraRef = useRef();
   const video = React.useRef(null);
+
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
@@ -168,27 +171,63 @@ const Review = () => {
         alignContent: 'center',
         position:'absolute',
         bottom:10,
-        left:10,
-        right:10
+        left:80,
+        right:80
         
       }}>
-        {openCamera && !isVideoRecording ? <Button
-          title="Flip Camera"
-          onPress={() => switchCamera()}>
-        </Button> : null}
+        {openCamera && !isVideoRecording ?
+         <TouchableOpacity onPress={() => switchCamera()}>
+         <MaterialCommunityIcons name="camera-flip" style={{color:'lightblue'}} size={30}/>
+       </TouchableOpacity>
+        
+        : null}
         {
-          !isVideoRecording && !isPreview ?
+          !isVideoRecording && !isPreview && !openCamera ?
           <Button title={openCamera ? "Take video" : "Open Camera"} onPress={() => recordVideo()} />
           :null
         }
+
+        {
+          openCamera && !isVideoRecording && !isPreview ?
+          <TouchableOpacity onPress={() => recordVideo()}>
+            <MaterialCommunityIcons name="record" style={{color:'lightblue'}} size={50}/>
+          </TouchableOpacity>
+          :null
+        }
       
-        {openCamera ? <Button title="Stop Video" onPress={() => stopVideoRecording()} /> : null}
-        {isPreview ? <Button
-          title={status.isPlaying ? 'Pause' : 'Play'}
-          onPress={() =>
+        {/* <TouchableOpacity>
+          <MaterialCommunityIcons name="record" style={{color:'lightblue'}} size={50}/>
+        </TouchableOpacity> */}
+        {openCamera ? 
+        <TouchableOpacity  onPress={() => stopVideoRecording()}>
+          <AntDesign name="closecircleo" style={{color:'red'}} size={20}/>
+        </TouchableOpacity>
+        :null
+        }
+        {/* {openCamera ? <Button title="Stop Video" onPress={() => stopVideoRecording()} /> : null} */}
+        {isPreview ? 
+          // <Button
+          // title={status.isPlaying ? 'Pause' : 'Play'}
+          // onPress={() =>
+          //   status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
+          // } /> 
+
+          <TouchableOpacity  onPress={() =>
             status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-          } /> : null}
-        {isPreview ? <Button title='close preview' onPress={() => cancelPreview()} /> : null}
+          }>
+          <MaterialCommunityIcons name={status.isPlaying ? "stop-circle-outline": "play-circle"} 
+            style={{color:status.isPlaying ? 'red' : 'lightblue'}} size={50}/>
+          </TouchableOpacity>
+          
+          : null
+        }
+
+
+        {isPreview ? 
+        <TouchableOpacity  onPress={() => cancelPreview()}>
+          <AntDesign name="closecircleo" style={{color:'red'}} size={20}/>
+        </TouchableOpacity>
+        : null}
       </View>
     </SafeAreaView>
   );
