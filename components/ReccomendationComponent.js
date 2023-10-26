@@ -12,6 +12,7 @@ const ReccomendationComponent = ({item, setModalVisible,setSelectedProduct}) => 
 
   return (
     <TouchableOpacity style={isWeb ? styles.containerWeb: styles.containerAndroid} onPress={() => {setSelectedProduct(item);setModalVisible(true)}}>
+      <View>
       <View style={styles.imageContainer}>      
       <Image
         style={styles.image}
@@ -20,11 +21,14 @@ const ReccomendationComponent = ({item, setModalVisible,setSelectedProduct}) => 
         contentFit="contain"
         transition={1000}
       /></View>
+      <View style={{display:'flex',flexDirection:'row', marginHorizontal:10}}>
+        <View style={{flex:1}}><Text style={styles.titleText}>{item.productName}</Text></View>
+        <View style={{flex:1,right:0,position:'absolute'}}><Text style={styles.priceText}>${item.productPrice}</Text></View>
+      </View>
       <View style={styles.dataContainer}>
-        <Text style={styles.titleText}>{item.productName}</Text>
         <Text style={styles.subtitleText}>{item.productDescription}</Text>
-        <Text style={styles.priceText}>{item.productPrice}</Text>
-        </View>
+      </View>
+      </View>
     </TouchableOpacity>
 
   );
@@ -35,13 +39,13 @@ export default ReccomendationComponent;
 const styles = StyleSheet.create({
   titleText:{
     fontSize: 16,
-    marginBottom:2,
+   // marginBottom:2,
     fontWeight: 'bold',
     color: '#333749',
   },
   subtitleText:{
-    marginBottom:2,
-    fontSize: 13,
+   // marginBottom:2,
+    fontSize: 12,
     color: '#CDCED2',
   },
   priceText:{
@@ -54,22 +58,24 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   imageContainer:{
-    height: 270,
-    backgroundColor: 'white'
+    height: 260,
+    backgroundColor: 'rgba(52, 52, 52, alpha)'
+
   },
   dataContainer:{
-    height: 85,
-    backgroundColor: '#FFFFFF'
+    marginHorizontal:10,
+    backgroundColor: 'rgba(52, 52, 52, alpha)'
+
   },
   containerAndroid: {
     backgroundColor: 'black',
-    padding: 1,
+    padding: 2,
     backgroundColor:'#FFFFFF',
     flexBasis: '50%'
   },
   containerWeb: {
     backgroundColor: 'black',
-    padding: 1,
+    padding: 2,
     backgroundColor:'#FFFFFF',
     flexBasis: '25%'
   },

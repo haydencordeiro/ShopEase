@@ -13,11 +13,22 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer >
-      <Tab.Navigator  >
+    <NavigationContainer>
+      <Tab.Navigator 
+      screenOptions={{
+                headerShown:true,
+                tabBarStyle:{
+                  height:60,
+                  position:'absolute',
+                  bottom:5,
+                  right:16,
+                  left:16,
+                  borderRadius:10
+                }
+            }}>
         <Tab.Screen name="Home" component={HomeScreen}
           options={{
-
+            tabBarShowLabel:false,
             tabBarLabel: 'Home',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="home" color={color} size={size} />
@@ -27,6 +38,7 @@ export default function App() {
         <Tab.Screen name="Shorts" component={ShortScreen}
           options={{
             unmountOnBlur: true,
+            tabBarShowLabel:false,
             tabBarLabel: 'Shorts',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="video-check-outline" color={color} size={size} />
@@ -35,7 +47,9 @@ export default function App() {
           }} />
         <Tab.Screen name="Review" component={Review}
           options={{
+            unmountOnBlur: true,
             tabBarLabel: 'Review',
+            tabBarShowLabel:false,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="camera-plus" color={color} size={size} />
             ),
@@ -43,7 +57,7 @@ export default function App() {
           }} />
         <Tab.Screen name="Loyalty Points" component={LoyaltyPoints}
           options={{
-
+            tabBarShowLabel:false,
             tabBarLabel: 'Loyalty Points',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="scoreboard-outline" color={color} size={size} />

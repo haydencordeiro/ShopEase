@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import {Modal , StyleSheet, Text, View,SafeAreaView, FlatList , Button} from 'react-native';
+import {Modal , StyleSheet, Text, View,SafeAreaView, FlatList , Button, ScrollView} from 'react-native';
 import ReccomendationComponent from '../components/ReccomendationComponent'
 import {Platform} from 'react-native';
 import React, { useState, useEffect } from 'react';
@@ -40,21 +40,34 @@ const HomeScreen = () => {
       );
 
   return (
-
+    
     <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
     <Modal visible={modalVisible}>
       <SafeAreaView style={{ flex: 1, flexDirection: 'column' }}>
         <ProductModal setModalVisible={setModalVisible} item={selectedProduct}></ProductModal>
       </SafeAreaView>
     </Modal>    
-    <FlatList
-      data={data}
-      keyExtractor={(item) => item.id}
-      renderItem={renderItem}
-      numColumns={numColumns}
-      styles={styles.container}
-    />
+    <SafeAreaView  style={{
+      marginHorizontal:10,
+      marginBottom:65,
+      borderRadius:100,
+      backgroundColor: 'rgba(52, 52, 52, alpha)'
+
+    }}>
+   
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.id}
+          renderItem={renderItem}
+          numColumns={numColumns}
+          styles={styles.container}
+        />
+
+    </SafeAreaView>
+    
   </SafeAreaView>
+  
+
 
   );
 }

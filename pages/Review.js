@@ -170,7 +170,7 @@ const Review = () => {
         display: 'flex',
         alignContent: 'center',
         position:'absolute',
-        bottom:10,
+        bottom:100,
         left:80,
         right:80
         

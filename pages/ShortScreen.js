@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:1,
         paddingVertical:10,
         position:'absolute',
-        bottom:120,
+        bottom:150,
         left:10,
         color:'white'
     },
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     rightView:{
         position:'absolute',
         right:10,
-        bottom:120,
+        bottom:150,
         alignItems:'center',
         
     }
