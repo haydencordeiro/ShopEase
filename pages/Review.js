@@ -5,6 +5,7 @@ import { Video } from 'expo-av';
 import { SafeAreaView } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
 
 const Review = () => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -138,6 +139,10 @@ const Review = () => {
   if (hasPermission === false) {
     return <Text style={styles.text}>No access to camera</Text>;
   }
+  const navigation = useNavigation();
+  const submit = ()=>{
+    navigation.navigate('Loyalty Points',{videoUpload:20,index:2});
+  }
   return (
     <SafeAreaView style={styles.container}>
       {openCamera ?
@@ -225,9 +230,16 @@ const Review = () => {
 
         {isPreview ? 
         <TouchableOpacity  onPress={() => cancelPreview()}>
-          <AntDesign name="closecircleo" style={{color:'red'}} size={20}/>
+          
         </TouchableOpacity>
         : null}
+        {
+          isPreview?
+          <TouchableOpacity onPress={()=>submit()}>
+          <AntDesign name="checkcircle" style={{color:'green'}} size={50}/>
+          </TouchableOpacity>
+          :null
+        }
       </View>
     </SafeAreaView>
   );

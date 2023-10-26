@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import LoyaltyTask from '../components/LoyaltyTask'
 import React, { useState, useEffect } from 'react';
 
-const LoyaltyPoints = () => {
+const LoyaltyPoints = ({ route, navigation }) => {
+  console.log(route.params)
   const [data, setData] = useState([
     { id: '1', description: 'Upload Picture To Earn Points', text: 'Task 1' },
     { id: '2', description: 'Record a Video of your Recent purchase', text: 'Task 2' },
@@ -11,6 +12,14 @@ const LoyaltyPoints = () => {
     // Add more items as needed
   ]);
   const [loyaltyPoints, setLoyaltyPoints] = useState(0)
+
+  useEffect(()=>{
+    if(route &&  route.params &&  route.params.videoUpload){
+      setLoyaltyPoints(prev=> prev+ route.params.videoUpload)
+      setToDoToDone(route.params.index)
+    }
+  },[route.params])
+
   function setToDoToDone(item){
     let temp = data[item - 1];
     temp.done = "test";
