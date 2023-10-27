@@ -14,6 +14,9 @@ const LoyaltyTask = ({ item, setToDoToDone, incrementLoyaltyPoints}) => {
 
 
   function performTask(item){
+    if(item.done){
+      return
+    }
     if (item.description && item.description == 'Upload Picture To Earn Points'){
       pickImage(item)
     }
