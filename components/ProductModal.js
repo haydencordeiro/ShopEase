@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity,Button } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity,Button,ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import React, { useState, useEffect } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
 import {Platform} from 'react-native';
-
+import CustomerComments from './CustomerComments';
 const isWeb = Platform.OS === 'web';
 
 const blurhash =
@@ -22,7 +22,7 @@ const ProductModal = ({ item, setModalVisible}) => {
 
 
   return (
-    <TouchableOpacity style={styles.container} onPress={()=>{}}>
+    <View style={styles.container} onPress={()=>{}}>
           <View style={isWeb ? styles.containerWeb: styles.containerAndroid}>
       <View style={styles.imageContainer}>      
       <Image
@@ -38,11 +38,16 @@ const ProductModal = ({ item, setModalVisible}) => {
         <Text style={styles.priceText}>${item.productPrice}</Text>
         <Text style={styles.subtitleText}> Isle Number 10</Text>
         </View>
+        <Text style={{marginTop:10,fontSize:16}}>Comments:</Text>
+        {/* <ScrollView> */}
+        <CustomerComments></CustomerComments>
+        <CustomerComments></CustomerComments>
+        {/* </ScrollView> */}
       <Button title='Hide' onPress={()=>setModalVisible(false)}></Button>
     </View>
       
 
-    </TouchableOpacity>
+    </View>
 
   );
 }

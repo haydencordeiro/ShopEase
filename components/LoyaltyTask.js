@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   profileIcon:{
     width: 90,
     height:90,
-    backgroundColor: 'red',
+    backgroundColor: '#BA274A',
     borderRadius: '50%',
     justifyContent:'center',
     alignItems: 'center',
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   profileIconDone:{
     width: 90,
     height:90,
-    backgroundColor: 'green',
+    backgroundColor: '#b2ece1',
     borderRadius: '50%',
     justifyContent:'center',
     alignItems: 'center',
