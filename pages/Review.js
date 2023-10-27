@@ -141,7 +141,7 @@ const Review = () => {
   }
   const navigation = useNavigation();
   const submit = ()=>{
-    navigation.navigate('Loyalty Points',{videoUpload:20,index:2});
+    navigation.navigate('Loyalty Points',{videoUpload:2,index:2});
   }
   return (
     <SafeAreaView style={styles.container}>

@@ -40,7 +40,7 @@ const LoyaltyTask = ({ item, setToDoToDone, incrementLoyaltyPoints}) => {
     
     if (!result.canceled) {
         setToDoToDone(item.id);
-        incrementLoyaltyPoints(10);
+        incrementLoyaltyPoints(1);
         setImage(result.assets[0].uri);
       
     }
