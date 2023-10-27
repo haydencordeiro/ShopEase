@@ -148,11 +148,12 @@ const styles = StyleSheet.create({
         "sources" : [ "https://media.graphassets.com/VVYKQbnyQaqmWmK47hPX" ],
       },
       { 
+        "sources" : [ "https://media.graphassets.com/kznWLFWSQ8CYC4pVjWV6" ],
+      },
+      { 
         "sources" : [ "https://media.graphassets.com/53tQ12sTLSjprScn8m3o" ],
       },
       { 
         "sources" : [ "https://media.graphassets.com/tOSU3VK8T7yrsxC1MVEk" ],
       },
-
-      
    ];
