@@ -21,7 +21,10 @@ const HomeScreen = () => {
 
       async function fetchData(){
         try {
-          const response = await fetch('http://shopease.hayden.co.in:8080/recommendation/?text="blue shirt men"',{
+          const response = await fetch('http://shopease.hayden.co.in:8080/recommendation/?text="womens shoes"',{
+          // const response = await fetch('http://shopease.hayden.co.in:8080/recommendation/?text="blue shirt men"',{
+            // const response = await fetch('http://shopease.hayden.co.in:8080/recommendation/?text="women maxi dress pink fit"',{
+              // const response = await fetch('http://shopease.hayden.co.in:8080/recommendation/?text="shawl red"',{
             method: 'POST'});
           const json = await response.json();
           console.log(json);
