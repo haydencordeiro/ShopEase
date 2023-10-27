@@ -21,9 +21,10 @@ const HomeScreen = () => {
 
       async function fetchData(){
         try {
-          const response = await fetch('https://shop-ease-nzbi.onrender.com/');
+          const response = await fetch('http://shopease.hayden.co.in:8080/recommendation/?text="blue shirt men"',{
+            method: 'POST'});
           const json = await response.json();
-          // console.log(json.data);
+          console.log(json);
           setData(json.data);
         } catch (error) {
           console.error(error);
@@ -57,7 +58,7 @@ const HomeScreen = () => {
    
         <FlatList
           data={data}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.productId}
           renderItem={renderItem}
           numColumns={numColumns}
           styles={styles.container}

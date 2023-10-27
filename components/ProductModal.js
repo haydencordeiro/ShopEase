@@ -34,11 +34,11 @@ const ProductModal = ({ item, setModalVisible}) => {
       /></View>
       <View style={styles.dataContainer}>
         <Text style={styles.titleText}>{item.productName}</Text>
-        <Text style={styles.subtitleText}>{item.productDescription}</Text>
+        {/* <Text style={styles.subtitleText}>{item.productDescription}</Text> */}
         <Text style={styles.priceText}>${item.productPrice}</Text>
-        <Text style={styles.subtitleText}> Isle Number 10</Text>
+        <Text style={styles.subtitleText}> Aisle Number 10</Text>
         </View>
-        <Text style={{marginTop:10,fontSize:16}}>Comments:</Text>
+        <Text style={{marginTop:6,fontSize:16}}>Comments:</Text>
         {/* <ScrollView> */}
         <CustomerComments></CustomerComments>
         <CustomerComments></CustomerComments>
@@ -63,10 +63,11 @@ const styles = StyleSheet.create({
   },
   subtitleText:{
     marginBottom:2,
-    fontSize: 13,
+    fontSize: 15,
     color: '#CDCED2',
   },
   priceText:{
+
     fontSize: 16,
     fontWeight: 'bold',
     color: '#333749',

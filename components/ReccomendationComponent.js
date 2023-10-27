@@ -23,10 +23,10 @@ const ReccomendationComponent = ({item, setModalVisible,setSelectedProduct}) => 
       /></View>
       <View style={{display:'flex',flexDirection:'row', marginHorizontal:10}}>
         <View style={{flex:1}}><Text style={styles.titleText}>{item.productName}</Text></View>
-        <View style={{flex:1,right:0,position:'absolute'}}><Text style={styles.priceText}>${item.productPrice}</Text></View>
+        {/* <View style={{flex:1,right:0,position:'absolute'}}><Text style={styles.priceText}>${item.productPrice}</Text></View> */}
       </View>
       <View style={styles.dataContainer}>
-        <Text style={styles.subtitleText}>{item.productDescription}</Text>
+        <Text style={styles.subtitleText}>${item.productPrice}</Text>
       </View>
       </View>
     </TouchableOpacity>
@@ -63,8 +63,10 @@ const styles = StyleSheet.create({
 
   },
   dataContainer:{
+    fontSize:16,
     marginHorizontal:10,
-    backgroundColor: 'rgba(52, 52, 52, alpha)'
+    backgroundColor: 'rgba(52, 52, 52, alpha)',
+    // backgroundColor: 'red',
 
   },
   containerAndroid: {
